@@ -137,24 +137,6 @@ function writeToFile(fileName, data) {
 
 };
 
-// Write the user response to a file by chaining the below callback method to the prompt above.
-//   .then(function(data) {
-//     // Bonus: Generate the name of your user file from their input
-//     const filename =
-//       data.name
-//         .toLowerCase()
-//         .split(' ')
-//         .join('') + '.json';
-
-//     fs.writeFile(filename, JSON.stringify(data, null, '\t'), function(err) {
-//       if (err)
-//         return console.log(err);
-//       }
-
-//       console.log('Success!');
-//     });
-//   });
-
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then(function(data) {

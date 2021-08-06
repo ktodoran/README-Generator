@@ -1,7 +1,7 @@
-# README-Generator
+# README Generator
 
   ## Description
-  I am creating a Node.js application that will ask a user a series of questions to generate a clean, and organized README file for a project they are working on
+  Created a unique application using the Node.js packaging to create a clean, and orgainzed READM gernator for a project that a Developer is working on
 
   ## Table of Contents 
   * [Installation](#installation)
@@ -17,7 +17,7 @@
   npm install
 
   ## Usage
-  Open the file in VS Code. Through the Terminal, navigate into the Develop folder, and run "node index" to initialize the process. From there, you will be asked a series of questions that are required to be answered. Once you complete the series of questions, a beautiful, clean, and organized README file will be generated for you.
+  Through the Terminal, navigate to the Develop folder, and first run npm install to ensure all the correct packages are installed. Next, run the node command to start the application. You will then be asked a series of questions that will be required to answer. Once all questions have been answered correctly, a clean and organized README file will be generated. You will then find that README file in the dist folder.
 
   ## Credits
   N/A
