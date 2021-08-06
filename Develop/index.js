@@ -1,61 +1,183 @@
+// TODO: Include packages needed for this application
+const fs = require('fs');
 const inquirer = require('inquirer');
-const generateMarkdown = require('../Develop/utils/generateMarkdown');
-const generateReadMe = require('../Develop/src/markdownTemplate');
+const generateMarkdown = require('./utils/generateMarkdown');
 
-//create validation function for required inquirer prompts
-const inquirerValidate = input => {
-    if(input){
-        return true;
-    }
-    else{
-        console.log("Please answer this question. It is required.");
-        return false;
-    }
-};
-
-// Array of questions (formatted for Inquirer) to ask user.
+// TODO: Create an array of questions for user input
+//MUST HAVE at least: type, name and message
 const questions = [
-    {type: 'list', name: 'license', message: "Please choose a license for your project.", choices: [
-        "Apache 2.0", "MIT", "GPL 3.0", "BSD 3.0", "Creative Commons 1.0", "None"
-    ]},
-    {type: 'checkbox', name: 'language', message: "What languages were used to build your project?", choices: [
-        "HTML", "CSS", "JavaScript", "TypeScript", "Python", "C#", "C", "C++", "Ruby", "Java", "Shell"
-    ]},
-    {type: 'input', name: 'title', message: "What is the name of your project?", validate: inquirerValidate},
-    {type: 'input', name: 'description', message: "Please provide a description of your project.", validate: inquirerValidate},
-    {type: 'input', name: 'installation', message: "Please provide installation instructions for your project.", validate: inquirerValidate},
-    {type: 'input', name: 'usage', message: "Please provide instructions your project's use.", validate: inquirerValidate},
-    {type: 'input', name: 'contributing', message: "Please provide a guidelines for contributing to your project.", validate: inquirerValidate},
-    {type: 'input', name: 'tests', message: "Please provide instructions for writing tests for your project.", validate: inquirerValidate},
-    {type: 'input', name: 'github', message: "Please provide your GitHub username.", validate: inquirerValidate},
-    {type: 'input', name: 'email', message: "Please provide your email address.", validate: inquirerValidate},
-    {type: 'input', name: 'questions', message: "Please provide instructions for users to contact you with questions about your project.", validate: inquirerValidate}
-    // need to add additional users question
-    // need to add question to ask if project is deployed and what the deployment link is.
+    {
+        type: 'input',
+        name: 'name',
+        message: "What is your name? (Required)",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter your name here."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'title',
+        message: "What is the title of your project? (Required)",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter the title of your project."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: "What is your GitHub username? (Required)",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter your GitHub username."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: "What is your email address? (Required)",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter your email address here."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'description',
+        message: "Please write a short description of your project. (Required)",
+        validate: (input) => {
+            if (input === '') {
+                return "Please write a short description of your project."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'list',
+        name: 'license',
+        message: "What kind of license should your project have? (Required)",
+        //allow user to choose other
+        choices: ['Apache', 'Boost', 'BSD', 'Eclipse', 'IBM', 'ISC', 'MIT', 'Mozilla', 'SIL', 'Unlicense', 'Zlib', 'None'],
+    },
+    {
+        type: 'input',
+        name: 'dependencies',
+        message: "What command should be run to install dependencies? (Required)",
+        default: 'npm install',
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: "Please provide instructions and examples for use. (Required)",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter the instructions and examples for the use of your project."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'credits',
+        message: "Please list your collaborators (including links to their Github profiles), any third-party assets used (list the creaters with links to their primary web presence), and any tutorials utilized (include the links here).",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter any credits here."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: "Please include any tests and examples for your application.",
+        validate: (input) => {
+            if (input === '') {
+                return "Please make sure you enter any tests or examples for your application."
+            }
+            return true;
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'contents',
+        message: "Would you like your README.md to include a table of contents?",
+        //allow user to choose other (y/N)
+    },
+    {
+        type: 'confirm',
+        name: 'contributing',
+        message: "Did you create an application or package that you would like others to contribute to?",
+        //allow user to choose other (y/N)
+    },
+
 ];
 
-const promptQuestions = () => {
-    return inquirer.prompt(questions)
-    .then(answers => {
-        return answers;
+
+
+// TODO: Create a function to write README file
+function writeToFile(fileName, data) {
+    // console.log(fileName);
+    // console.log(data);
+    fs.writeFile(`./generated/${fileName}`, generateMarkdown(data), err => {
+        if (err) {
+            throw err
+        };
+        console.log('README has been successfully created!')
     });
+
 };
 
-// Function call to initialize app when node app is run
-promptQuestions()
-    .then(answers => {
-        //pass answers to generate markdown function to generate the markdown syntax for the readme
-        return generateMarkdown(answers);
+// Write the user response to a file by chaining the below callback method to the prompt above.
+//   .then(function(data) {
+//     // Bonus: Generate the name of your user file from their input
+//     const filename =
+//       data.name
+//         .toLowerCase()
+//         .split(' ')
+//         .join('') + '.json';
+
+//     fs.writeFile(filename, JSON.stringify(data, null, '\t'), function(err) {
+//       if (err)
+//         return console.log(err);
+//       }
+
+//       console.log('Success!');
+//     });
+//   });
+
+// TODO: Create a function to initialize app
+function init() {
+    inquirer.prompt(questions).then(function(data) {
+        let fileName = "generatedREADMEFile.md"
+        if(data.contributing === true){
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'contributorCovenant',
+                    message: "Please include contributing guidelines here.",
+                    default: '[Contributor Covenant](https://www.contributor-covenant.org/)'
+                },
+            ]).then(value => {
+                //console.log('value', value)
+                data.contributorCovenant = value.contributorCovenant
+                writeToFile(fileName, data);
+            })
+        }else{
+            writeToFile(fileName, data);
+        }
+       
     })
-    .then(markdown => {
-        //generate the readme and write the file to the dist folder
-        return generateReadMe(markdown);
-    })
-    .then(genMarkDownResponse => {
-        //log the success message from the readme generation
-        console.log(genMarkDownResponse.message);
-    })
-    .catch(err => {
-        //log the error message from the readme generation if it occurs
-        console.log(err);
-    });
+};
+
+// Function call to initialize app
+init();

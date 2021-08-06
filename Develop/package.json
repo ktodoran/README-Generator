@@ -1,14 +1,22 @@
 {
-  "name": "static-site",
+  "name": "challenge-9-node.js-readme-generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerismith32/challenge-9-Node.js-README-generator.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jerismith32/challenge-9-Node.js-README-generator/issues"
+  },
+  "homepage": "https://github.com/jerismith32/challenge-9-Node.js-README-generator#readme",
   "dependencies": {
-    "inquirer": "^6.3.1"
+    "inquirer": "^8.1.0"
   }
 }
