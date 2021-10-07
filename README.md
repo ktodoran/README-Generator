@@ -5,11 +5,12 @@
 This is a project that allows a user to answer a series of questions that will generate a README File for any project they are working on, and allow the user to implement that file into their file structure
 
 ## Table of Contents
-- [Installation](#Installation)
+- [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
 - [Documentation](#documentation)
+- [Questions](#questions)
 
 ## Installation
 
@@ -54,9 +55,6 @@ SOFTWARE.
 Walkthrough Video: [View WalkThrough](https://youtu.be/oU1W22ugSTk "Walkthrough")
 
 Walkthrough video shows what do to after navigating into the Develop folder. There is no need for this any longer, as I have removed the Developed folder, and structured the files at the root of the project.
-
-## Video
-https://youtu.be/oU1W22ugSTk
 
 ## Questions
 GitHub: ktodoran
