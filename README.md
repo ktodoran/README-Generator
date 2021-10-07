@@ -53,6 +53,8 @@ SOFTWARE.
 
 Walkthrough Video: [View WalkThrough](https://youtu.be/oU1W22ugSTk "Walkthrough")
 
+Walkthrough video shows what do to after navigating into the Develop folder. There is no need for this any longer, as I have removed the Developed folder, and structured the files at the root of the project.
+
 ## Video
 https://youtu.be/oU1W22ugSTk
 
