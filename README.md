@@ -1,32 +1,61 @@
-# Challenge-9-Node.js-README-Generator
+# README Generator
 
-  ## Description
-  The purpose of this project was to create a README File Generator primarily using Node.js
+## Description
 
-  ## Table of Contents 
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Credits](#credits)
-  * [Contributing](#contributing)
-  * [Tests](#tests)
-  * [Questions](#questions)
+This is a project that allows a user to answer a series of questions that will generate a README File for any project they are working on, and allow the user to implement that file into their file structure
 
-  ## Installation
-  npm install
+## Table of Contents
+- [Installation](#Installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Documentation](#documentation)
 
-  ## Usage
-  Needed for this project is inquirer
+## Installation
 
-  ## Credits
-  The starter code for this project was required. Materials, readings, examples were utilized from classwork, TA help, and tutor sessions.
+Clone the repo, navigate to the root, run the following commands from the CLI:
 
-  ## Contributing
-  This project is not open for contributions at this time.
+npm install 
 
+## Usage
 
-  ## Tests
-  Tests and examples for this project have been submitted including a video walk through.
+Once you have installed the necessary dependencies, run the following command to start the questions series:
 
-  ## Questions
-  GitHub: ktodoran
-  Email: ktodoran@gmail.com
+node index
+
+## Credits
+
+Kyle Todoran
+
+## License
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Documentation
+
+Walkthrough Video: [View WalkThrough](https://youtu.be/oU1W22ugSTk "Walkthrough")
+
+## Video
+https://youtu.be/oU1W22ugSTk
+
+## Questions
+GitHub: ktodoran
+Email: ktodoran@gmail.com
