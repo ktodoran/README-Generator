@@ -1,12 +1,8 @@
-// TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
-//MUST HAVE at least: type, name and message
-const questions = [
-    {
+const questions = [{
         type: 'input',
         name: 'name',
         message: "What is your name? (Required)",
@@ -65,7 +61,6 @@ const questions = [
         type: 'list',
         name: 'license',
         message: "What kind of license should your project have? (Required)",
-        //allow user to choose other
         choices: ['Apache', 'Boost', 'BSD', 'Eclipse', 'IBM', 'ISC', 'MIT', 'Mozilla', 'SIL', 'Unlicense', 'Zlib', 'None'],
     },
     {
@@ -111,23 +106,16 @@ const questions = [
         type: 'confirm',
         name: 'contents',
         message: "Would you like your README.md to include a table of contents?",
-        //allow user to choose other (y/N)
     },
     {
         type: 'confirm',
         name: 'contributing',
         message: "Did you create an application or package that you would like others to contribute to?",
-        //allow user to choose other (y/N)
     },
 
 ];
 
-
-
-// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    // console.log(fileName);
-    // console.log(data);
     fs.writeFile(`./generated/${fileName}`, generateMarkdown(data), err => {
         if (err) {
             throw err
@@ -137,29 +125,24 @@ function writeToFile(fileName, data) {
 
 };
 
-// TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then(function(data) {
         let fileName = "generatedREADMEFile.md"
-        if(data.contributing === true){
-            inquirer.prompt([
-                {
-                    type: 'input',
-                    name: 'contributorCovenant',
-                    message: "Please include contributing guidelines here.",
-                    default: '[Contributor Covenant](https://www.contributor-covenant.org/)'
-                },
-            ]).then(value => {
-                //console.log('value', value)
+        if (data.contributing === true) {
+            inquirer.prompt([{
+                type: 'input',
+                name: 'contributorCovenant',
+                message: "Please include contributing guidelines here.",
+                default: '[Contributor Covenant](https://www.contributor-covenant.org/)'
+            }, ]).then(value => {
                 data.contributorCovenant = value.contributorCovenant
                 writeToFile(fileName, data);
             })
-        }else{
+        } else {
             writeToFile(fileName, data);
         }
-       
+
     })
 };
 
-// Function call to initialize app
 init();
